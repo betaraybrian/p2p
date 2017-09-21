@@ -5,6 +5,7 @@ sensor = new Gpio(17, 'in', 'both');
 
 var port = 8686;
 
+var infraValue = 0;
 
 http.createServer(function(req,res){
 	console.log('New incoming client request for ' + req.url);
@@ -14,7 +15,7 @@ http.createServer(function(req,res){
 			sensor.watch(function (err, value) {
 				if (err) exit(err);
 					console.log(value ? 'there is some one!' : 'not anymore!');
-					res.write('{"Result" :' + value ? 'there is some one!' : 'not anymore!');
+					infraValue = value;
 				});
 				function exit(err) {
 					if (err) console.log('An error occurred: ' + err);
@@ -23,6 +24,7 @@ http.createServer(function(req,res){
 						process.exit();
 					}
 				process.on('SIGINT', exit);
+				res.write('{"Result" :' + infraValue ? 'there is some one!' : 'not anymore!');
 			break;
 		case '/light':
 			res.write('{"light" :' + '}');
