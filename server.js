@@ -16,8 +16,6 @@ var port = 8686;
 
 var infraValue = 0;
 
-var ledon = false;
-
 
 //root page
 app.get('/', function (req, res) {
@@ -56,20 +54,7 @@ app.listen(port, function () {
   console.log('Example app listening on port:' + port);
 })
 
-//turn led on/off
-function ledonoff(){
-	if (ledon == false){
-		led.write(1, function() {
-			console.log("Changed LED state to: On");
-			ledon = true;
-		});
-	}else{
-		led.write(0, function() {
-			console.log("Changed LED state to: Off");
-			ledon = false;
-		});
-	}
-}
+
 
 //read infrared value
 function readInfrared(err, value){

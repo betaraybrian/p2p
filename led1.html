@@ -11,6 +11,10 @@
    	</body>
 
    	<script>
+   	var onoff = require('onoff');
+	var Gpio = onoff.Gpio,
+		led = new Gpio(4, 'out'),
+		sensor = new Gpio(17, 'in', 'both');
    	var ledon = false;
 
    	//turn led on/off
