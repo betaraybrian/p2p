@@ -11,6 +11,8 @@
    	</body>
 
    	<script>
+   	var http = require("http");
+	var request = require('request');
    	var onoff = require('onoff');
 	var Gpio = onoff.Gpio,
 		led = new Gpio(4, 'out'),
