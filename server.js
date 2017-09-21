@@ -15,7 +15,7 @@ var infraValue = 0;
 
 var ledon = false;
 
-function ledonoff (){
+function ledonoff(){
 	if (ledon == false){
 		led.write(1, function() {
 			console.log("Changed LED state to: On");
