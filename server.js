@@ -55,7 +55,7 @@ app.get('/actuators', function (req, res){
 
 //LED1 page
 app.get('/actuators/led1', function (req, res){
-	res.send('LED1' + '<button type = button" onclick ="ledonoff()">Turn on/off</button>')
+	res.send('LED1' + '<button type="button" onclick ="ledonoff()">Turn on/off</button>')
 })
 
 //infrared page
