@@ -39,8 +39,8 @@ app.get('/actuators', function (req, res){
 
 //LED1 page
 app.get('/actuators/led1', function (req, res){
+	console.log (path.join(__dirname + '/led1.html'))
 	res.sendFile(path.join(__dirname + '/led1.html'))
-	res.end();
 })
 
 //infrared page
