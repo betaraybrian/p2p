@@ -4,6 +4,8 @@ var request = require('request');
 var express = require('express');
 var app = express();
 
+var path = require("path");
+
 var onoff = require('onoff');
 var Gpio = onoff.Gpio,
 	led = new Gpio(4, 'out'),
@@ -37,7 +39,7 @@ app.get('/actuators', function (req, res){
 
 //LED1 page
 app.get('/actuators/led1', function (req, res){
-	res.send('<button type="button" onclick="ledonoff();">Turn on/off</button>')
+	res.sendFile(path.join(__dirname + '/led1.html'))
 	res.end();
 })
 
@@ -54,6 +56,7 @@ app.listen(port, function () {
   console.log('Example app listening on port:' + port);
 })
 
+//turn led on/off
 function ledonoff(){
 	if (ledon == false){
 		led.write(1, function() {
@@ -68,13 +71,14 @@ function ledonoff(){
 	}
 }
 
+//read infrared value
 function readInfrared(err, value){
 	//if (err) exit(err);
 	console.log("Value" + value);
 	if (value == 0){
 
 	}else{
-		
+
 	}
 }
 
