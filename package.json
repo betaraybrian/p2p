@@ -1,0 +1,15 @@
+{
+  "name": "milestone2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "milestone2.js",
+  "dependencies": {
+    "express": "^4.15.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
