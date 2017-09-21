@@ -15,28 +15,6 @@ var infraValue = 0;
 
 var ledon = false;
 
-function ledonoff(){
-	if (ledon == false){
-		led.write(1, function() {
-			console.log("Changed LED state to: On");
-			ledon = true;
-		});
-	}else{
-		led.write(0, function() {
-			console.log("Changed LED state to: Off");
-			ledon = false;
-		});
-
-		process.on('SIGINT', function () {
-		led.writeSync(0);
-		led.unexport();
-		console.log('Bye, bye!');
-		process.exit();
-		});
-	}
-}
-
-
 
 //root page
 app.get('/', function (req, res) {
@@ -68,3 +46,24 @@ app.get('/sensors/infrared', function (req, res){
 app.listen(port, function () {
   console.log('Example app listening on port:' + port);
 })
+
+function ledonoff(){
+	if (ledon == false){
+		led.write(1, function() {
+			console.log("Changed LED state to: On");
+			ledon = true;
+		});
+	}else{
+		led.write(0, function() {
+			console.log("Changed LED state to: Off");
+			ledon = false;
+		});
+
+		process.on('SIGINT', function () {
+		led.writeSync(0);
+		led.unexport();
+		console.log('Bye, bye!');
+		process.exit();
+		});
+	}
+}
