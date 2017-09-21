@@ -16,6 +16,8 @@ var port = 8686;
 
 var infraValue = 0;
 
+var ledon = false;
+
 
 //root page
 app.get('/', function (req, res) {
@@ -43,9 +45,7 @@ app.get('/actuators/led1', function (req, res){
 
 //infrared page
 app.get('/sensors/infrared', function (req, res){
-	res.send('Infrared')
-	sensor.watch(readInfrared)
-	res.end();
+	res.send('Result:' + sensor.watch(readInfrared))
 })
 
 
@@ -55,16 +55,27 @@ app.listen(port, function () {
 })
 
 
+//turn led on/off
+	function ledonoff(){
+		if (ledon == false){
+			led.write(1, function() {
+				console.log("Changed LED state to: On");
+				ledon = true;
+			});
+		}else{
+			led.write(0, function() {
+				console.log("Changed LED state to: Off");
+				ledon = false;
+			});
+		}
+	}
+
 
 //read infrared value
 function readInfrared(err, value){
 	//if (err) exit(err);
 	console.log("Value" + value);
-	if (value == 0){
-
-	}else{
-
-	}
+	return value;
 }
 
 //stop GPIO

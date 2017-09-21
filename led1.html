@@ -5,35 +5,16 @@
 
 <html>
    <body>
-   	Welcome to our LED
+   	Welcome to our LED 
+   	<br>
    	 <button type="button" onclick="ledonoff()">Turn led on/off</button>
 
    	</body>
 
    	<script>
-   	var http = require("http");
-	var request = require('request');
-   	var onoff = require('onoff');
-	var Gpio = onoff.Gpio,
-		led = new Gpio(4, 'out'),
-		sensor = new Gpio(17, 'in', 'both');
-   	var ledon = false;
-
-   	//turn led on/off
-	function ledonoff(){
-		if (ledon == false){
-			led.write(1, function() {
-				console.log("Changed LED state to: On");
-				ledon = true;
-			});
-		}else{
-			led.write(0, function() {
-				console.log("Changed LED state to: Off");
-				ledon = false;
-			});
-		}
-	}
-
+   	
+	
+   	
 	</script>
 
 
