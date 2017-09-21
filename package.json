@@ -1,7 +1,6 @@
 {
   "name": "milestone2",
   "version": "1.0.0",
-  "description": "",
   "main": "milestone2.js",
   "dependencies": {
     "express": "^4.15.4",
@@ -12,5 +11,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/betaraybrian/p2p.git"
+  },
+  "bugs": {
+    "url": "https://github.com/betaraybrian/p2p/issues"
+  },
+  "homepage": "https://github.com/betaraybrian/p2p#readme",
+  "description": ""
 }
