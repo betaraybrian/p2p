@@ -23,8 +23,8 @@ http.createServer(function(req,res){
 						console.log('Bye, bye!')
 						process.exit();
 					}
-				process.on('SIGINT', exit);
 				res.write('{"Result" :' + infraValue ? 'there is some one!' : 'not anymore!');
+				process.on('SIGINT', exit);
 			break;
 		case '/light':
 			res.write('{"light" :' + '}');
