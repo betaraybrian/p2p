@@ -6,7 +6,7 @@ var app = express();
 
 var onoff = require('onoff');
 var Gpio = onoff.Gpio,
-	led = new Gpio(4, 'out'),
+	led = new Gpio(4, 'out');
 
 
 var port = 8686;
