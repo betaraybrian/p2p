@@ -44,7 +44,7 @@ app.get('/actuators/led1', function (req, res){
 
 //infrared page
 app.get('/sensors/infrared', function (req, res){
-	res.send('Result:' + sensor.watch(readInfrared))
+	res.send('Result:' + infraValue)
 })
 
 
@@ -53,6 +53,7 @@ app.listen(port, function () {
   console.log('Example app listening on port:' + port);
 })
 
+//turn led on/off
 app.post('/actuators/led1/ledOnOff', function(req, res){
 	ledonoff();
 })
@@ -74,11 +75,11 @@ app.post('/actuators/led1/ledOnOff', function(req, res){
 
 
 //read infrared value
-function readInfrared(err, value){
+sensor.watch(err, value){
 	//if (err) exit(err);
 	console.log("Value" + value);
-	return value;
-}
+	infraValue = value;
+})
 
 //stop GPIO
 process.on('SIGINT', function () {
