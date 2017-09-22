@@ -40,11 +40,18 @@ app.get('/actuators', function (req, res){
 //LED1 page
 app.get('/actuators/led1', function (req, res){
 	res.send('Turn the LED on and off' + '<br>' + '<form action=\"/actuators/led1/ledOnOff\" method=\"post\"> <input type=\"submit\" value=\"Turn LED On / Off\"></form>')
+
+})
+
+app.get('/actuators/led1/status', function (req, res){
+	res.writeHeader(200, {'Content-Type': 'application/json'});
+	res.write('{"status: " :' + ledon + '}');
 })
 
 //infrared page
 app.get('/sensors/infrared', function (req, res){
-	res.send('Result:' + infraValue)
+	res.writeHeader(200, {'Content-Type': 'application/json'});
+	res.write('{"value: " :' + infraValue + '}');
 })
 
 
