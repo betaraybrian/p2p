@@ -39,8 +39,7 @@ app.get('/actuators', function (req, res){
 
 //LED1 page
 app.get('/actuators/led1', function (req, res){
-	console.log (path.join(__dirname + '/led1.html'))
-	res.sendFile(path.join(__dirname + '/led1.html'))
+	res.send('Turn the LED on and off' + '<br>' + '<form action\"/ledOnOff\" method=\"post\"> <input type=\"submit\" value=\"Turn LED On / Off\"></form>')
 })
 
 //infrared page
@@ -54,7 +53,9 @@ app.listen(port, function () {
   console.log('Example app listening on port:' + port);
 })
 
-
+app.post('/actuators/led1/ledOnOff', function(req, res){
+	ledonoff();
+})
 //turn led on/off
 	function ledonoff(){
 		if (ledon == false){
