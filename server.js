@@ -75,11 +75,10 @@ app.post('/actuators/led1/ledOnOff', function(req, res){
 
 
 //read infrared value
-sensor.watch(err, value){
-	//if (err) exit(err);
+sensor.watch(function (err, value) {
 	console.log("Value" + value);
 	infraValue = value;
-})
+});
 
 //stop GPIO
 process.on('SIGINT', function () {
