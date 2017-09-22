@@ -39,7 +39,7 @@ app.get('/actuators', function (req, res){
 
 //LED1 page
 app.get('/actuators/led1', function (req, res){
-	res.send('Turn the LED on and off' + '<br>' + '<form action=\"/ledOnOff\" method=\"post\"> <input type=\"submit\" value=\"Turn LED On / Off\"></form>')
+	res.send('Turn the LED on and off' + '<br>' + '<form action=\"/actuators/led1/ledOnOff\" method=\"post\"> <input type=\"submit\" value=\"Turn LED On / Off\"></form>')
 })
 
 //infrared page
