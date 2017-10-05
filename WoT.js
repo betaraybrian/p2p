@@ -141,10 +141,10 @@ request(options, callbackFunction);
 startUp();
 
 
-setTimeout(function(){
+setInterval(function(){
 	if(peer == null){
 		return;
 	}
 			console.log('sending data ...');
-			SendStore(peer.IP, peer.Port, infraValue, piIP + ":" + port + "/pi/sensors/infrared", function(error, response, body){} )
+			SendStore(peer.IP, peer.Port, infraValue, piIP + ":" + port + "/pi/sensors/infrared", function(error, response, body){} );
 		}, 2000);
