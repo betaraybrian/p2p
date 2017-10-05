@@ -146,7 +146,7 @@ setInterval(function(){
 		return;
 	}
 			console.log('sending data ...');
-			SendStore(peer.IP, peer.Port, infraValue, piIP + ":" + port + "/pi/sensors/infrared", function(error, response, body){
+			SendStore(networkIP, peer.Port, infraValue, piIP + ":" + port + "/pi/sensors/infrared", function(error, response, body){
 				console.log('getting answer back', error);
 			} );
 		}, 2000);
