@@ -1,0 +1,4 @@
+Temperature: undefined Light: undefined
+Temperature: undefined Light: undefined
+Temperature: 37 Light: 50
+Temperature: 1 Light: 30
