@@ -106,10 +106,7 @@ function startUp(){
 	sendConnectToNetwork(networkIP, networkPort, piIP + ":" + port + "/pi/sensors/infrared", 10, function(error, response, body){
 		peer = JSON.parse(body);
 		console.log(peer);
-		setTimeout(function(){
-			console.log('sending data ...');
-			SendStore(peer.IP, peer.Port, infraValue, piIP + ":" + port + "/pi/sensors/infrared", function(error, response, body){} )
-		}, 2000)
+		
 	});
 }
 
@@ -142,3 +139,12 @@ request(options, callbackFunction);
 
 
 startUp();
+
+
+setTimeout(function(){
+	if(peer == null){
+		return;
+	}
+			console.log('sending data ...');
+			SendStore(peer.IP, peer.Port, infraValue, piIP + ":" + port + "/pi/sensors/infrared", function(error, response, body){} )
+		}, 2000);
