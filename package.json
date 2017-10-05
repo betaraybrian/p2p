@@ -4,7 +4,8 @@
   "main": "milestone2.js",
   "dependencies": {
     "express": "^4.15.4",
-    "onoff": "^1.1.7"
+    "onoff": "^1.1.7",
+    "request": "^2.83.0"
   },
   "devDependencies": {},
   "scripts": {

@@ -56,6 +56,7 @@ app.get('/pi/actuators/led1/status', function (req, res){
 app.get('/pi/sensors/infrared', function (req, res){
 	res.writeHeader(200, {'Content-Type': 'application/json'});
 	res.write('{"value: " :' + infraValue + '}');
+	res.end();
 })
 
 
@@ -102,12 +103,12 @@ process.on('SIGINT', function () {
 
 
 function startUp(){
-	sendConnectToNetwork(networkIP, networkPort, piIP + ":" + port + "/pi/sensors/infrared", function(error, response, body){
+	sendConnectToNetwork(networkIP, networkPort, piIP + ":" + port + "/pi/sensors/infrared", 10, function(error, response, body){
 
 	});
 }
 
-function sendConnectToNetwork(IP, Port, url, refreshrate, callbackfunction){
+function sendConnectToNetwork(IP, Port, url, refreshrate, callbackFunction){
 
 	var options = {
     uri: 'http://'+IP+':'+Port+'/connect',
@@ -115,8 +116,9 @@ function sendConnectToNetwork(IP, Port, url, refreshrate, callbackfunction){
       'url': url,
       'refreshrate': refreshrate
     }
-      request(options, callbackFunction);
+    
   };
+request(options, callbackFunction);
 }
 
 startUp();
