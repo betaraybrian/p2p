@@ -22,7 +22,7 @@ var infraValue = 0;
 
 var ledon = false;
 
-
+var peer = null;
 //root page
 app.get('/pi', function (req, res) {
   res.send('Welcome to our Raspberry Pi!' + '<br>' + 'Here are our devices:' + '<br>' + '<a href="/sensors">Sensors</a>' + '<br>' + '<a href="/actuators">Actuators</a>')
@@ -104,8 +104,24 @@ process.on('SIGINT', function () {
 
 function startUp(){
 	sendConnectToNetwork(networkIP, networkPort, piIP + ":" + port + "/pi/sensors/infrared", 10, function(error, response, body){
-
+		peer = JSON.parse(body);
+		setTimeout(function(){
+			SendStore(peer.IP, peer.Port, infraValue, piIP + ":" + port + "/pi/sensors/infrared", function(error, response, body){} )
+		}, 2000)
 	});
+}
+
+function SendStore(nodeIP, nodePort, value, valueID, callbackFunction){
+
+  var options = {
+    uri: 'http://'+nodeIP+':'+nodePort+'/storeValueManually', 
+    qs:{
+    	value:value,
+    	valueID:valueID
+    }
+    
+  };
+  request.post(options, callbackFunction);
 }
 
 function sendConnectToNetwork(IP, Port, url, refreshrate, callbackFunction){
@@ -120,5 +136,7 @@ function sendConnectToNetwork(IP, Port, url, refreshrate, callbackFunction){
   };
 request(options, callbackFunction);
 }
+
+
 
 startUp();
